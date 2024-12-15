@@ -1,0 +1,89 @@
+{% include 'header.html' %}
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>{{appType}} | Car Project</h1>
+        <h3>
+          Demo:
+          <a href="{{url_for('createcar')}}">Create</a>
+          /
+          <a href="{{url_for('readcar')}}">Read</a>
+          /
+          <a href="{{url_for('updatecar')}}">Update</a>
+          /
+          <a href="{{url_for('deletecar')}}">Delete</a>
+          /
+          <a href="{{url_for('searchcar')}}">Search</a>
+        </h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <h4>Update Car Data</h4>
+        <p>Silahkan perbarui data mobil di bawah ini.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <!-- Form untuk memperbarui data mobil -->
+        <form action="{{url_for('updatecar', car_id=car.id)}}" method="POST">
+          <!-- Pastikan car_id sudah diambil dari database dan diteruskan ke template -->
+
+          <div class="form-group">
+            <label for="car_name">Nama Mobil</label>
+            <input
+              type="text"
+              class="form-control"
+              id="car_name"
+              name="car_name"
+              value="{{ car.name }}"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="car_model">Model Mobil</label>
+            <input
+              type="text"
+              class="form-control"
+              id="car_model"
+              name="car_model"
+              value="{{ car.model }}"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="car_year">Tahun Mobil</label>
+            <input
+              type="number"
+              class="form-control"
+              id="car_year"
+              name="car_year"
+              value="{{ car.year }}"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="car_price">Harga Mobil</label>
+            <input
+              type="number"
+              class="form-control"
+              id="car_price"
+              name="car_price"
+              value="{{ car.price }}"
+              required
+            />
+          </div>
+
+          <button type="submit" class="btn btn-primary">
+            Perbarui Data Mobil
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+{% include 'footer.html' %}
